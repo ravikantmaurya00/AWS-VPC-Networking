@@ -9,11 +9,18 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
  - Modular & Scalable infrastructure design
 ## Creating VPC in AWS with 2 public and private subnet.
   **Step 1:-** **Create a VPC**
-    - Go to AWS Console → Navigate to VPC Dashboard.
-    - Click Create VPC → Name it (e.g., MyVPC).
-    - Choose IPv4 CIDR block: 10.0.0.0/16.
-    - Choose two  Availability Zones as **us-east-1a** and **us-east-1b**
-    - Enable DNS hostname support.
-    - Click Create VPC.
+   -  Go to AWS Console and navigate to VPC Dashboard.
+   -  Click Create VPC → Name it (e.g., MyVPC).
+   -  Choose IPv4 CIDR block: 10.0.0.0/16.
+   -  Choose two  Availability Zones as **us-east-1a** and **us-east-1b**.
+   -  Choose one public and private subnets in each availability zones.
+      - Availability Zone :  **us-east-1a**
+        -  Public Subnet CIDR Block: `10.0.0.0/20`
+        -  Private Subnet CIDR Block: `10.0.128.0/20`
+      - Availability Zone :  **us-east-1b**
+        -  Public Subnet CIDR Block: `10.0.16.0/20`
+        -  Private Subnet CIDR Block: `10.0.144.0/20`
+   -  Enable DNS hostname support.
+   -  Click Create VPC.
 
 
