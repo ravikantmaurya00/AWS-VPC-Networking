@@ -41,7 +41,7 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
   - **Gateways**
     - **IGW**: Connects Public Subnet 1 and Public Subnet 2 to the internet.
     - **VPG**: Connects Private Subnet 1 and Private Subnet 2.
- ## Step By Step Way to Craete this Architecture
+ ## Step By Step Way to Create this Architecture
 
   **Step 1:-** **Create a VPC**.
    -  Go to AWS Console and navigate to **VPC Dashboard**.
