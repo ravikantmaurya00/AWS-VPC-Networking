@@ -34,10 +34,10 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
   - **Subnet Configuration**  
      - **Availability Zone :1** :
        - Public Subnet 1: `10.0.0.0/20`
-       - Private Subnet 1: `10.0.0.128/20`
+       - Private Subnet 1: `10.0.128.0/20`
      - **Availability Zone :2** :
-       - Public Subnet 2: `10.0.0.16/20`
-       - Private Subnet 2: `10.0.0.192/20`
+       - Public Subnet 2: `10.0.16.0/20`
+       - Private Subnet 2: `10.0.192.0/20`
   - **Gateways**
     - **IGW**: Connects Public Subnet 1 and Public Subnet 2 to the internet.
     - **VPG**: Connects Private Subnet 1 and Private Subnet 2.
@@ -64,7 +64,7 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
           - Name: `PrivateSubnet-1`.
           - Choose your VPC : `MyVPC`.
           - Choose a Availability Zone :`us-east-1a`
-          - IPv4 CIDR Block: `10.0.0.128/20`.
+          - IPv4 CIDR Block: `10.0.128.0/20`.
           - Click **Create Subnet**.
         - This will create one Public Subnet and one Private subnet in **us-east-1a** zone.
       -  **Availability Zone :2**
@@ -73,13 +73,13 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
                - Name: `PublicSubnet-2`.
                - Choose your VPC : `MyVPC`.
                - Choose a Availability Zone :`us-east-1b`
-               - IPv4 CIDR Block: `10.0.0.16/20`.
+               - IPv4 CIDR Block: `10.0.16.0/20`.
                - Click **Create Subnet**.
             - Repeat the step to create Private Subnet in the same availability zone.
                - Name: `PrivateSubnet-2`.
                - Choose your VPC : `MyVPC`.
                - Choose a Availability Zone :`us-east-1b`
-               - IPv4 CIDR Block: `10.0.0.192/20`.
+               - IPv4 CIDR Block: `10.0.192.0/20`.
                - Click **Create Subnet**.
             - This will create one Public Subnet and one Private subnet in **us-east-1b** zone.
               
