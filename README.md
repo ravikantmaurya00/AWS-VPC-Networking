@@ -124,6 +124,45 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
             - Click **Launch**.
      - Repeat the process for `PrivateSubnet-2`, selecting the corresponding subnet.
 
+## Configuring the Security Group for SSH Access
+  - **Step 1:-** **Navigate to the Security Groups Section**
+      - Log in to the *AWS Management Console*.
+      - Open the *VPC Dashboard* or *EC2 Dashboard*.
+      - On the left-hand navigation menu, click Security Groups under Network & Security.
+  - **Step 2:-** **Create a New Security Group**
+      - Click the *Create security group button*.
+      - Configure the following settings:
+         - Name tag: Enter a name for the security group (e.g., Private-SSH-Access).
+         - Description: Provide a description (e.g., Allows SSH access from specific IP).
+         - VPC: Select the VPC (`MyVPC`) where your instance resides.
+  - **Step 3:-** **Configure Inbound Rules**
+      - Under the Inbound rules section, click *Add rule*.
+      - Define the SSH rule as follows:
+         - Type: `SSH`.
+         - Protocol: `TCP` (auto-filled when SSH is selected).
+         - Port Range: `22`.
+         - Source: Select one of the following:
+            - My IP: Automatically fills in your current public IP address.
+            - Custom: Enter a specific IP or CIDR block. For example:
+             - Single IP: `203.0.113.25/32` (allows only this IP).
+             - CIDR Block: `192.168.1.0/24` (allows all IPs in this range).
+         - **Anywhere-IPv4** (Not recommended for private instances): `0.0.0.0/0` (allows SSH access from any IPv4 address).
+       - Click **Save rules**.
+   - **Step 4:-** **(Optional) Configure Outbound Rules**
+      - By default, all outbound traffic is allowed. If you need to restrict outbound traffic:
+        - Click the *Outbound rules section*.
+        - Add or modify rules as needed (e.g., limit outbound traffic to specific IPs or services).
+   - **Step 5:-**  **Attach the Security Group to Your Instance**
+     - Navigate to the *EC2 Dashboard*.
+     - Select the instance where you want to apply the security group.
+     - Click *Actions* → *Security* → *Change security groups*.
+     - Select the `Private-SSH-Access` security group you just created.
+     - Click **Save**.
+## Testing and Verification
+ - Verify public instances have internet access via their public IPs.
+ - Ensure private instances communicate only via the VPG.
+ - Use SSH or ping to test connectivity between instances.
+
 
 
 
