@@ -7,8 +7,28 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
  - NAT Gateway for outbound internet access from private subnets
  - VPN Connectivity to on-premises corporate networks
  - Modular & Scalable infrastructure design
-## Creating VPC in AWS with 2 public and private subnet.
-### Architectural Overview of VPC
+# Creating VPC in AWS with 2 public and private subnet.
+## Concept Used
+  - **Virtual Private Cloud (VPC)**
+    - A Virtual Private Cloud is a logically isolated section of the AWS cloud where you can launch resources in a virtual network you define. A VPC allows you to control 
+      your network settings such as IP address ranges, subnets, route tables, and gateways.
+  - **Subnets**
+    - Subnets are subdivisions of a VPC that allow you to group resources by IP range within an Availability Zone. Subnets can be public (accessible from the internet) or 
+      private (isolated from the internet).
+
+  - **Internet Gateway (IGW)**
+    - An Internet Gateway is a VPC component that allows resources in public subnets to access the internet. It serves as a target for internet-bound traffic in the route 
+      table of a public subnet.
+
+  - **Virtual Private Gateway (VPG)**
+    - A Virtual Private Gateway is a VPN concentrator on the AWS side of a VPN connection. It allows private subnets to securely communicate with other private networks, 
+      such as on-premises environments or other VPCs.
+  - **Route Table**
+    - A Route Table contains a set of rules, called routes, that determine where network traffic is directed.
+  - **Availability Zone (AZ)**
+    - An Availability Zone is a distinct location within an AWS Region that is engineered to be isolated from failures in other zones, providing high availability.
+      
+## Architectural Overview of VPC
   - **VPC Configuration**
      - **CIDR Block**: `10.0.0.0/16`
   - **Subnet Configuration**  
@@ -21,7 +41,7 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
   - **Gateways**
     - **IGW**: Connects Public Subnet 1 and Public Subnet 2 to the internet.
     - **VPG**: Connects Private Subnet 1 and Private Subnet 2.
- ### Step By Step Way to Craete this Architecture
+ ## Step By Step Way to Craete this Architecture
 
   **Step 1:-** **Create a VPC**.
    -  Go to AWS Console and navigate to **VPC Dashboard**.
