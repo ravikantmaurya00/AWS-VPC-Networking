@@ -41,15 +41,20 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
   - **Gateways**
     - **IGW**: Connects Public Subnet 1 and Public Subnet 2 to the internet.
     - **VPG**: Connects Private Subnet 1 and Private Subnet 2.
+  ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/whole%20resource%20map.png)
  ## Step By Step Way to Create this Architecture
 
   **Step 1:-** **Create a VPC**.
    -  Go to AWS Console and navigate to **VPC Dashboard**.
+     ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/vpc%20dashboard.png)
+
    -  Click **Create VPC**
         -  Name as `MyVPC`
         -  Choose **IPv4 CIDR block**: `10.0.0.0/16`.
+          ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/create%20vpc.png)
         -  Leave all other options as default.
    -  Click **Create VPC**.
+     ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/created%20vpc.png)
   
   **Step 2:-** **Creating Subnets**
    -  **Availability Zone :1**
@@ -59,13 +64,16 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
           - Choose your VPC : `MyVPC`.
           - Choose a Availability Zone :`us-east-1a`
           - IPv4 CIDR Block: `10.0.0.0/20`.
+            ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/pus1.png)
       - Click **Create Subnet**.
+        ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/pus1a.png)
       - Repeat the step to create Private Subnet in the same availability zone.
           - Name: `PrivateSubnet-1`.
           - Choose your VPC : `MyVPC`.
           - Choose a Availability Zone :`us-east-1a`
           - IPv4 CIDR Block: `10.0.128.0/20`.
           - Click **Create Subnet**.
+            ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/ps1.png)
         - This will create one Public Subnet and one Private subnet in **us-east-1a** zone.
       -  **Availability Zone :2**
            - Navigateto VPC Dashboard.
@@ -75,34 +83,48 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
                - Choose a Availability Zone :`us-east-1b`
                - IPv4 CIDR Block: `10.0.16.0/20`.
                - Click **Create Subnet**.
+                 ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/pus2.png)
             - Repeat the step to create Private Subnet in the same availability zone.
                - Name: `PrivateSubnet-2`.
                - Choose your VPC : `MyVPC`.
                - Choose a Availability Zone :`us-east-1b`
                - IPv4 CIDR Block: `10.0.192.0/20`.
                - Click **Create Subnet**.
+                 ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/ps2.png)
             - This will create one Public Subnet and one Private subnet in **us-east-1b** zone.
-              
+           [](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/all%20subnet.png)   
  **Step 3:-** **Create an Internet Gateway (IGW)**
    - Navigate to Internet Gateways in the **VPC Dashboard**.
    - Click Create **Internet Gateway**:
       - Name: `MyIGW`.
+        ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/igw%20creating.png)
    - Click Create.
+     ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/igw2.png)
    - Attach your **VPC** to the **Internet Gateway**  that is `MyIGW` to `MyVPC`.
       - Select the **Internet gateway** `MyIGW`.
       - Then click on **Actions** and then select `Attach to VPC`.
+       ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/attaching%20igw.png) 
       - Choose `MyVPC`.
+        ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/attaching%20igw2.png)
+      - Then click on **Attach**.
+        ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/attached%20igw.png)
         
 **Step 4:-** **Creating a Virtual Private Gateway (VPG)**
    - Navigate to **Virtual Private Gateways** in the **VPC Dashboard**.
    - Click **Create Virtual Private Gateway**:
        - Name: `MyVPG`.
+       ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/vpg.png)
        - Leave the **Autonomous System Number (ASN)** as default.
    - Click Create.
+     ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/vpg2.png)
    - Attach your **Virtual Private Gateway** to your **VPC** that is  `MyVPG` to `MyVPC`:
        - Select the  **Virtual Private Gateway** `MyVPG`.
        - Click on **Actions** and then select `Attach to VPC`.
+         ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/attaching%20vpg1.png)
        - Choose `MyVPC`.
+         ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/attaching%20vpg2.png)
+       - Then click on **Attach to VPC**.
+         ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/attached%20vpg.png)
          
 **Step 5:-** **Configuring  Route Tables**
   - **Public Route Table**:
@@ -111,27 +133,39 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
       - Click **Create Route Table**.
       - Name: `PublicRouteTable`.
       - Select VPC: `MyVPC`.
+        ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/publicroute%20table.png)
     - Add a route for internet traffic:
       - Select the route table`PublicRouteTable`.
       - Then click on **Routes tab** and then on **Edit Routes**.
+        ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/editing%20public%20table.png)
       - Click on **Add Route**.
       - Choose **Destination**: `0.0.0.0/0`
-      - Select Target as your **Internet Gateway** `MyIGW`. 
+      - Select Target as your **Internet Gateway** `MyIGW`.
+        ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/editi%20public%20route.png) 
     - Associate public subnets with the route table:
       - Click on **Subnet Associations** and then on **Edit Subnet Associations**.
+        ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/editing%20subnet%20ass.png)
       - Select your Public Subnets: `PublicSubnet-1` & `PublicSubnet-2`.
+        ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/editing%20subnet%20ass%20choosing%20public%20subnet%20.png)
+        ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/public%20route%20table%20final.png)
  - **Private Route Table**:
    - Create a route table for private subnets:
      - Click **Create Route Table**.
      - Name: `PrivateRouteTable`.
      - Select your VPC :`MyVPC`.
+       ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/private%20route%20table.png)
    - Enable route propagation for the VPG:
      - Select the route table `PrivateRouteTable`.
      - Click on **Route Propagation tab** and then on **Edit Route Propagation**.
+       ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/editing%20route%20propagation.png)
      - Select your VPG : `MyVPG`.
+       ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/enable%20route%20propgation.png)
    - Associate private subnets with the route table:
      - Click on **Subnet Associations** and then on **Edit Subnet Associations**.
+       ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/editing%20subnet%20assocition%20in%20private.png)
      - Select your Private Subnets: `PrivateSubnet-1` & `PrivateSubnet-2`.
+       ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/private%20subnet%20associotion.png)
+       ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/final%20private%20route%20table.png)
 
 **Step 6:-** **Launching  EC2 Instances**
   - **Public Subnets**
@@ -140,6 +174,7 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
        - Configure networking to use `PublicSubnet-1`.
        - Assign a public IP address.
      - Repeat the process for `PublicSubnet-2`.
+       ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/public%20instaNCES1.png)
    - **Private Subnets**
       - Launch an EC2 instance in `PrivateSubnet-1`:
         - Step 1: Navigate to the *EC2 Dashboard* and click *Launch Instance*.
@@ -158,6 +193,7 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
           - Select an existing key pair or create a new one for SSH access.
             - Click **Launch**.
      - Repeat the process for `PrivateSubnet-2`, selecting the corresponding subnet.
+     ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/all%20instancres.png)
 
 ## Configuring the Security Group for SSH Access
   - **Step 1:-** **Navigate to the Security Groups Section**
@@ -183,6 +219,7 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
              - CIDR Block: `192.168.1.0/24` (allows all IPs in this range).
          - **Anywhere-IPv4** (Not recommended for private instances): `0.0.0.0/0` (allows SSH access from any IPv4 address).
        - Click **Save rules**.
+         ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/creating%20sg.png)
    - **Step 4:-** **(Optional) Configure Outbound Rules**
       - By default, all outbound traffic is allowed. If you need to restrict outbound traffic:
         - Click the *Outbound rules section*.
@@ -195,6 +232,7 @@ It serves as a reference for deploying scalable, secure, and cost-efficient AWS 
      - Click **Save**.
 ## Testing and Verification
  - Verify public instances have internet access via their public IPs.
+   ![](https://github.com/ravikantmaurya00/AWS-VPC-Networking/blob/main/ScreenShot/apache%202.png)
  - Ensure private instances communicate only via the VPG.
  - Use SSH or ping to test connectivity between instances.
 
